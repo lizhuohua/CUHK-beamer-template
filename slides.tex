@@ -1,0 +1,143 @@
+\input{./preamble.tex}
+
+\title[Sample]{CUHK Beamer Template}
+\subtitle{Sample Slides}
+\author[Li Zhuohua]{Li Zhuohua}
+\institute[CUHK]{The Chinese University of Hong Kong}
+\date{\today}
+
+\begin{document}
+
+\frame[plain]{\maketitle}
+
+\begin{frame}{Outline}
+  \tableofcontents{}
+\end{frame}
+
+\begin{frame}{Itemize Tests}
+	\renewcommand{\outlineii}{enumerate}
+	\begin{outline}
+		\1 One: \textit{Two} \textbf{Three}
+			\2 \so{letterspacing}
+			\2 \ul{underlining}
+			\2 \st{striking out}
+			\2 \hl{highlighting}
+			\2 \caps{CAPITALS, Small Capitals}
+		\1 Test Test Test
+	\end{outline}
+\end{frame}
+
+\begin{frame}{Multi-Columns}
+	\begin{multicols}{3}
+    [
+    All human things are subject to decay. And when fate summons, Monarchs must obey.
+    ]
+    Hello, here is some text without a meaning.  This text should show what 
+    a printed text will look like at this place.
+    If you read this text, you will get no information.  Really?  Is there 
+    no information?  Is there...
+    \end{multicols}
+\end{frame}
+
+\begin{frame}{Plot Test}
+    \pgfplotsset{width=5.5cm,compat=1.9}
+	\begin{tikzpicture}
+    \begin{axis}
+    \addplot[color=red]{exp(x)};
+    \end{axis}
+    \end{tikzpicture}
+    %Here ends the furst plot
+    \hskip 5pt
+    %Here begins the 3d plot
+    \begin{tikzpicture}
+    \begin{axis}
+    \addplot3[
+        surf,
+    ]
+    {exp(-x^2-y^2)*x};
+    \end{axis}
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{中文测试中文測試}
+	\begin{outline}
+		\1 这是简体中文這是繁體中文: \textbf{加粗} + \underline{下划线下劃線} + \textit{斜体斜體}
+			\2 这是第二层
+			\2 這是第二層
+	\end{outline}
+\end{frame}
+
+\begin{frame}{Citation Tests}
+	\begin{outline}
+		\1 Yao's Millionaires' problem~\footcite{10.5555/1382436.1382751}
+	\end{outline}
+\end{frame}
+
+\begin{frame}{Algorithm Test}
+    \begin{algorithm}[H]
+      \SetAlgoLined
+      \SetAlFnt{\tiny}
+      \SetAlCapFnt{\normalsize}
+      \SetAlCapNameFnt{\normalsize}
+      \algsetup{linenosize=\small}
+      \scriptsize
+      \SetKwFunction{Successors}{\textsc{Successors}}%
+      \SetKwFunction{Entry}{\textsc{Entry}}%
+      \SetKwFunction{Transfer}{\textsc{Transfer}}%
+      \KwIn{Control Flow Graph: $CFG$}%
+      \KwOut{Invariant: $State$}%
+      initialization: \parbox[t]{\linewidth}{
+        $State[n] \leftarrow \top$ if $n=\Entry{CFG}$\;
+        $State[n] \leftarrow \bot$ otherwise\;}
+    
+      $WorkList \leftarrow \Entry{CFG}$\;
+      \While{$WorkList$ is not empty}{
+        $WorkList \leftarrow WorkList \backslash \{n\}$\;
+        $new\_state \leftarrow \Transfer{State[n]}$\;
+        \ForEach{$succ \in \Successors{CFG, n}$} {
+          \If{$new\_state \not\sqsubseteq State[succ]$} {
+            $State[succ] \leftarrow State[succ] \sqcup new\_state$\;
+            $WorkList \leftarrow WorkList \cup \{succ\}$\;
+          }
+        }
+      }
+      \caption{Basic algorithm for Abstract Interpretation}
+    \end{algorithm}
+\end{frame}
+
+\begin{frame}[fragile]{Code Test}
+    \begin{minted}{rust}
+fn main() {
+    println!("Hello World!");
+}
+    \end{minted}
+	\begin{outline}
+		\1 Inline code is also supported: \mintinline{rust}{fn main() { }}
+	\end{outline}
+\end{frame}
+
+\begin{frame}{Theorem/Lemma/Proof}
+	\begin{theo}{Pythagorean Theorem}{pythagoras}
+		For a right triangle with legs $a$ and $b$ and hypotenuse $c$,
+		\[
+		a^2 + b^2 = c^2. 
+		\]
+	\end{theo}
+	This is a reference to Theorem \ref{th:pythagoras}.
+    \begin{lem}
+    $ x + y = y + x  $
+    \end{lem}
+    \begin{proof}
+    $\omega +\phi = \epsilon $
+    \end{proof}
+\end{frame}
+
+\begin{frame}[standout]
+Thank you!
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	\printbibliography
+\end{frame}
+
+\end{document}

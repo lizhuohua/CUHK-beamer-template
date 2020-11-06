@@ -49,10 +49,16 @@
 	enhanced jigsaw,colframe=cuhkpurple,interior hidden,
 	breakable,before skip=10pt,after skip=10pt }
 
+\iflinux
+  \setCJKmainfont{Source Han Sans CN}
+  \setCJKsansfont{Source Han Sans CN}
+\fi
+\ifmacosx
   \setCJKmainfont{Source Han Sans}
   \setCJKsansfont{Source Han Sans}
-  \setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
-  \setmonofont{Source Code Pro}
+\fi
+\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
+\setmonofont{Source Code Pro}
 
 \useoutertheme{metropolis}
 \useinnertheme{metropolis}

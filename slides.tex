@@ -10,9 +10,9 @@
 
 \frame[plain]{\maketitle}
 
-\begin{frame}{Outline}
-  \tableofcontents{}
-\end{frame}
+%\begin{frame}{Outline}
+%  \tableofcontents{}
+%\end{frame}
 
 \begin{frame}{Itemize Tests}
 	\renewcommand{\outlineii}{enumerate}
@@ -75,7 +75,7 @@
 
 \begin{frame}{Algorithm Test}
     \begin{algorithm}[H]
-      \SetAlgoLined
+%      \SetAlgoLinedq
       \SetAlFnt{\tiny}
       \SetAlCapFnt{\normalsize}
       \SetAlCapNameFnt{\normalsize}
@@ -114,6 +114,23 @@ fn main() {
 	\begin{outline}
 		\1 Inline code is also supported: \mintinline{rust}{fn main() { }}
 	\end{outline}
+    \[
+    \lim_x asdf
+    \]
+\end{frame}
+
+\begin{frame}{Math Test}
+    \begin{enumerate}
+        \item 特殊符号：$\alpha,\beta,\gamma,\delta,\epsilon,\varepsilon,\zeta,\eta,\theta,\vartheta,\iota,\kappa,\lambda,\nu,\xi,\varpi,\rho,\varrho,\sigma,\varsigma,\tau,\upsilon,\phi,\varphi,\chi,\psi,\omega$;
+        \item 其它：$f'',\sqrt{a},\overrightarrow{a},\subseteq,\supseteq$
+        \[\int,\iint,\iiint.\iiiint,\oint\]
+        \item 复杂式子
+        \resizebox{.9\hsize}{!}{%
+        $
+        \displaystyle\lim_{x\rightarrow 0^+}\displaystyle\lim_{y\rightarrow +\infty}\frac{\displaystyle\sum_{n=1}^{\infty}{\frac{\left(-1\right)^{n-1}}{n}}\displaystyle\sum_{m=0}^{\infty}{\frac{1}{n2^m+1}}\displaystyle\int_0^{x^2}{\frac{\pi \left(\sqrt[4]{1+t}-1\right)\sin t^4}{\displaystyle\sum_{n=1}^{\infty}{\displaystyle\frac{\left(\left(n-1\right)!\right)^2\left(2t\right)^{2n}}{\left(2n\right)!}}\displaystyle\int_0^1{\displaystyle\frac{\left(1-2x\right)\ln\left(1-x\right)}{x^2-x+1}\textrm{d}x}}\textrm{d}x}}{x^2\left(x-\tan x\right)\ln\left(x^2+1\right)\left[\left(\displaystyle\frac{2\arctan\frac{y}{x}}{\pi}\right)^y-1\right]}=\frac{27}{32}
+        $
+        }
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}{Theorem/Lemma/Proof}
@@ -124,16 +141,19 @@ fn main() {
 		\]
 	\end{theo}
 	This is a reference to Theorem \ref{th:pythagoras}.
-    \begin{lem}
+    \begin{lemma}
     $ x + y = y + x  $
-    \end{lem}
+    \end{lemma}
     \begin{proof}
     $\omega +\phi = \epsilon $
     \end{proof}
 \end{frame}
 
-\begin{frame}[standout]
-Thank you!
+\setbeamertemplate{headline}{}
+\addtobeamertemplate{frametitle}{\vspace*{-0.9\baselineskip}}{}
+\begin{frame}{}
+    \centering \Huge
+    \emph{Thank You}
 \end{frame}
 
 \begin{frame}[allowframebreaks]

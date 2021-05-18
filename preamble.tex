@@ -3,6 +3,9 @@
 \usepackage[style=authortitle]{biblatex} % For citation
 \renewcommand*{\bibfont}{\tiny}
 \addbibresource{bibliography.bib}
+%\usepackage{newtxmath}
+\usepackage{stix2} % Use stix2 font for math
+\usepackage[no-math]{fontspec}
 \usepackage{xeCJK} % Chinese font setting
 \usepackage{tcolorbox} % Coloured boxes, for LATEX examples and theorems, etc
 \tcbuselibrary{skins, breakable, theorems}
@@ -16,21 +19,23 @@
 \usepackage{soul} % For smallcaps/striking out/highlighting
 \sethlcolor{cuhklightyellow}
 \usepackage{minted} % For source code
-%\setminted[rust]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
-\setminted[rust]{frame=lines, breaklines, linenos}
 \usepackage{ifplatform} % For identifying OS platforms
 \usepackage[vlined, ruled, linesnumbered]{algorithm2e} % For algorithms
 \usepackage{algorithmic}
 \usepackage{amsmath} % For math symbols
 \usepackage{amssymb}
 \usepackage{pifont}
+\usepackage{varwidth}
 \usepackage{outlines} % For simplifying nested itemized/enumerate lists
+
+\setminted[rust]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
+\setminted[c]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
+\setminted[python]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
 
 \definecolor{cuhkpurple}{RGB}{117,15,109}
 \definecolor{cuhkyellow}{RGB}{221,163,0}
 \definecolor{cuhkblackyellow}{RGB}{153,102,0}
 \definecolor{cuhklightyellow}{RGB}{244,223,176}
-\usetheme[progressbar=foot, numbering=fraction]{metropolis}
 
 \newtcbtheorem{theo}{Theorem}%
   {enhanced, breakable,
@@ -38,16 +43,6 @@
     attach boxed title to top left = {yshift = -2mm, xshift = 5mm},
     boxed title style = {sharp corners},
     fonttitle = \sffamily\bfseries}{th}
-
-\tcolorboxenvironment{proof}{% `proof' from `amsthm'
-	blanker,breakable,left=5mm,
-	before skip=10pt,after skip=10pt,
-	borderline west={1mm}{0pt}{cuhkpurple}}
-
-\newtheorem{lem}{Lemma}% from `amsthm'
-\tcolorboxenvironment{lem}{
-	enhanced jigsaw,colframe=cuhkpurple,interior hidden,
-	breakable,before skip=10pt,after skip=10pt }
 
 \iflinux
   \setCJKmainfont{Source Han Sans CN}
@@ -57,20 +52,18 @@
   \setCJKmainfont{Source Han Sans}
   \setCJKsansfont{Source Han Sans}
 \fi
-\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
+
+\usefonttheme{professionalfonts}
 \setmonofont{Source Code Pro}
 
-\useoutertheme{metropolis}
-\useinnertheme{metropolis}
-\usefonttheme{metropolis}
-
-\setbeamercolor{normal text}{fg=black}
+\useoutertheme{infolines}
+\setbeamertemplate{navigation symbols}{}
+\usetheme[height=10mm]{Rochester}
+\usecolortheme[RGB={117,15,109}]{structure}
+\setbeamercolor{block title example}{use=structure,fg=white, bg=cuhkyellow}
+\setbeamercolor{block body example}{use=structure,fg=black, bg=cuhklightyellow}
 \setbeamercolor{alerted text}{fg=cuhkpurple, bg=cuhklightyellow}
-\setbeamercolor{structure}{fg=cuhkpurple}
-\setbeamercolor{palette primary}{fg=black, bg=white}
-
 \setbeamercolor{frametitle}{ fg=white, bg=cuhkpurple }
-\setbeamercolor{progress bar}{ fg=cuhkpurple, bg=white }
 
 \newcommand{\boxalert}[1]{{
     \usebeamercolor{alerted text}\colorbox{bg}{\alert{#1}}

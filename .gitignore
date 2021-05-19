@@ -1,0 +1,14 @@
+*.out
+*.bcf
+*.nav
+*.xml
+*.snm
+*.gz
+*.toc
+*.vrb
+*.swp
+*.log
+*.bbl
+*.blg
+*.aux
+_minted*

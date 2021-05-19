@@ -3,7 +3,7 @@
 \usepackage[style=authortitle]{biblatex} % For citation
 \renewcommand*{\bibfont}{\tiny}
 \addbibresource{bibliography.bib}
-%\usepackage{newtxmath}
+%\usepackage{newtxmath} % If you don't have stix2 font, uncomment this line and comment the next line
 \usepackage{stix2} % Use stix2 font for math
 \usepackage[no-math]{fontspec}
 \usepackage{xeCJK} % Chinese font setting
@@ -28,9 +28,15 @@
 \usepackage{varwidth}
 \usepackage{outlines} % For simplifying nested itemized/enumerate lists
 
+% Set minted style and font size, used for displaying source code
 \setminted[rust]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
 \setminted[c]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
 \setminted[python]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
+% For inline code, use the current font size
+\makeatletter
+\newcommand{\currentfontsize}{\fontsize{\f@size}{\f@baselineskip}\selectfont}
+\makeatother
+\setmintedinline{fontsize=\currentfontsize}
 
 \definecolor{cuhkpurple}{RGB}{117,15,109}
 \definecolor{cuhkyellow}{RGB}{221,163,0}

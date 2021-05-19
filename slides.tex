@@ -41,22 +41,18 @@
 
 \begin{frame}{Plot Test}
     \pgfplotsset{width=5.5cm,compat=1.9}
-	\begin{tikzpicture}
-    \begin{axis}
-    \addplot[color=red]{exp(x)};
-    \end{axis}
-    \end{tikzpicture}
-    %Here ends the furst plot
-    \hskip 5pt
-    %Here begins the 3d plot
-    \begin{tikzpicture}
-    \begin{axis}
-    \addplot3[
-        surf,
-    ]
-    {exp(-x^2-y^2)*x};
-    \end{axis}
-    \end{tikzpicture}
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}
+                \addplot3[
+                surf,
+                ]
+                {exp(-x^2-y^2)*x};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Plot $z=x(-x^2-y^2)$} \label{fig:plot}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{中文测试中文測試}
@@ -74,12 +70,10 @@
 \end{frame}
 
 \begin{frame}{Algorithm Test}
+    \IncMargin{1em}
     \begin{algorithm}[H]
-%      \SetAlgoLinedq
-      \SetAlFnt{\tiny}
-      \SetAlCapFnt{\normalsize}
-      \SetAlCapNameFnt{\normalsize}
-      \algsetup{linenosize=\small}
+      \DontPrintSemicolon
+      \SetVlineSkip{0pt}
       \scriptsize
       \SetKwFunction{Successors}{\textsc{Successors}}%
       \SetKwFunction{Entry}{\textsc{Entry}}%
@@ -101,6 +95,7 @@
           }
         }
       }
+      \SetAlCapHSkip{.5em}
       \caption{Basic algorithm for Abstract Interpretation}
     \end{algorithm}
 \end{frame}
@@ -114,17 +109,14 @@ fn main() {
 	\begin{outline}
 		\1 Inline code is also supported: \mintinline{rust}{fn main() { }}
 	\end{outline}
-    \[
-    \lim_x asdf
-    \]
 \end{frame}
 
 \begin{frame}{Math Test}
     \begin{enumerate}
-        \item 特殊符号：$\alpha,\beta,\gamma,\delta,\epsilon,\varepsilon,\zeta,\eta,\theta,\vartheta,\iota,\kappa,\lambda,\nu,\xi,\varpi,\rho,\varrho,\sigma,\varsigma,\tau,\upsilon,\phi,\varphi,\chi,\psi,\omega$;
-        \item 其它：$f'',\sqrt{a},\overrightarrow{a},\subseteq,\supseteq$
-        \[\int,\iint,\iiint.\iiiint,\oint\]
-        \item 复杂式子
+        \item Symbols: $\alpha,\beta,\gamma,\delta,\epsilon,\varepsilon,\zeta,\eta,\theta,\vartheta,\iota,\kappa,\lambda,\nu,\xi,\varpi,\rho,\varrho,\sigma,\varsigma,\tau,\upsilon,\phi,\varphi,\chi,\psi,\omega$;
+        \item Symbols: $f'',\sqrt{a},\overrightarrow{a},\subseteq,\supseteq$
+        \[\int,\iint,\iiint,\iiiint,\oint\]
+        \item Complex equation:
         \resizebox{.9\hsize}{!}{%
         $
         \displaystyle\lim_{x\rightarrow 0^+}\displaystyle\lim_{y\rightarrow +\infty}\frac{\displaystyle\sum_{n=1}^{\infty}{\frac{\left(-1\right)^{n-1}}{n}}\displaystyle\sum_{m=0}^{\infty}{\frac{1}{n2^m+1}}\displaystyle\int_0^{x^2}{\frac{\pi \left(\sqrt[4]{1+t}-1\right)\sin t^4}{\displaystyle\sum_{n=1}^{\infty}{\displaystyle\frac{\left(\left(n-1\right)!\right)^2\left(2t\right)^{2n}}{\left(2n\right)!}}\displaystyle\int_0^1{\displaystyle\frac{\left(1-2x\right)\ln\left(1-x\right)}{x^2-x+1}\textrm{d}x}}\textrm{d}x}}{x^2\left(x-\tan x\right)\ln\left(x^2+1\right)\left[\left(\displaystyle\frac{2\arctan\frac{y}{x}}{\pi}\right)^y-1\right]}=\frac{27}{32}
@@ -133,7 +125,8 @@ fn main() {
     \end{enumerate}
 \end{frame}
 
-\begin{frame}{Theorem/Lemma/Proof}
+\begin{frame}{Theorem/Lemma/Corollary/Proof}
+    Fancy style theorem:
 	\begin{theo}{Pythagorean Theorem}{pythagoras}
 		For a right triangle with legs $a$ and $b$ and hypotenuse $c$,
 		\[
@@ -141,11 +134,28 @@ fn main() {
 		\]
 	\end{theo}
 	This is a reference to Theorem \ref{th:pythagoras}.
-    \begin{lemma}
-    $ x + y = y + x  $
+    
+    Normal style theorem:
+    \begin{theorem}[Fixed-point Theorem]
+        In a lattice $L$ with finite height, every monotone function $f : L \rightarrow L$
+        has a unique least fixed-point denoted $fix (f)$ defined as:
+        \[
+        fix (f) = \bigsqcup_{i \geq 0}f^i(\bot)
+        \]
+    \end{theorem}
+\end{frame}
+
+\begin{frame}{Theorem/Lemma/Corollary/Proof}
+    \begin{lemma}[Lemma Name]
+        $ x + y = y + x  $
     \end{lemma}
-    \begin{proof}
-    $\omega +\phi = \epsilon $
+    
+    \begin{corollary}[Corollary Name]
+        There's no right rectangle whose sides measure 3cm, 4cm, and 6cm.
+    \end{corollary}
+    
+    \begin{proof}[\proofname\ (Theorem \ref{th:pythagoras})]
+        $\omega +\phi = \epsilon $
     \end{proof}
 \end{frame}
 
@@ -157,6 +167,7 @@ fn main() {
 \end{frame}
 
 \begin{frame}[allowframebreaks]
+    References
 	\printbibliography
 \end{frame}
 

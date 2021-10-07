@@ -4,7 +4,7 @@
 \renewcommand*{\bibfont}{\tiny}
 \addbibresource{bibliography.bib}
 %\usepackage{newtxmath} % If you don't have stix2 font, uncomment this line and comment the next line
-\usepackage{stix2} % Use stix2 font for math
+%\usepackage{stix2} % Use stix2 font for math
 \usepackage[no-math]{fontspec}
 \usepackage{xeCJK} % Chinese font setting
 \usepackage{tcolorbox} % Coloured boxes, for LATEX examples and theorems, etc
@@ -15,6 +15,7 @@
 \usepackage{multicol} % Multi-columns
 \usepackage{booktabs} % Better tables
 \usepackage{tikz} % For plot
+\usetikzlibrary{angles, arrows.meta, quotes, calc, intersections}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.16}
 \usepackage{soul} % For smallcaps/striking out/highlighting
@@ -25,14 +26,18 @@
 \usepackage{algorithmic}
 \usepackage{amsmath} % For math symbols
 \usepackage{amssymb}
+\usepackage{stmaryrd}
 \usepackage{pifont}
 \usepackage{varwidth}
 \usepackage{outlines} % For simplifying nested itemized/enumerate lists
+\usepackage{braket} % For quantum Dirac notation
+\usepackage{derivative} % For derivatives
 
 % Set minted style and font size, used for displaying source code
 \setminted[rust]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
 \setminted[c]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
 \setminted[python]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
+\setminted[bash]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
 % For inline code, use the current font size
 \makeatletter
 \newcommand{\currentfontsize}{\fontsize{\f@size}{\f@baselineskip}\selectfont}
@@ -61,6 +66,8 @@
 \fi
 
 \usefonttheme{professionalfonts}
+\setmainfont[Mapping=tex-text]{Helvetica Neue}
+\setsansfont{Helvetica Neue}
 \setmonofont{Source Code Pro}
 
 \useoutertheme{infolines}
@@ -78,3 +85,18 @@
 
 \newcommand{\cmark}{\ding{51}}
 \newcommand{\xmark}{\ding{55}}
+
+% Define some useful abbreviations
+\def\ZZ{{\mathbb Z}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\QQ{{\mathbb Q}}
+\def\EE{{\mathbb E}}
+\newcommand{\tr}{{\rm tr}}
+
+
+%% Logo
+\titlegraphic{
+    \includegraphics[width=4cm]{The-Chinese-University-of-Hong-Hong-logo.eps}
+}
+

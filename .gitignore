@@ -12,3 +12,6 @@
 *.blg
 *.aux
 _minted*
+*.fdb_latexmk
+*.fls
+/auto

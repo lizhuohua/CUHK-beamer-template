@@ -1,5 +1,4 @@
 % !TEX program = xelatex
-% !BIB program = biber
 % !TEX options = -synctex=1 -file-line-error -halt-on-error -xelatex -shell-escape "%DOC%"
 \input{./preamble.tex}
 
@@ -18,16 +17,18 @@
 %\end{frame}
 
 \begin{frame}{Itemize Tests}
-	\renewcommand{\outlineii}{enumerate}
-	\begin{outline}
-		\1 One: \textit{Two} \textbf{Three}
-			\2 \so{letterspacing}
-			\2 \ul{underlining}
-			\2 \st{striking out}
-			\2 \hl{highlighting}
-			\2 \caps{CAPITALS, Small Capitals}
-		\1 Test Test Test
-	\end{outline}
+	\begin{itemize}
+		\item One: \textit{Two} \textbf{Three}
+      \begin{itemize}
+        \item \so{letterspacing}
+        \item \ul{underlining}
+        \item \st{striking out}
+        \item \hl{highlighting}
+        \item \caps{CAPITALS, Small Capitals}
+        \item \boxalert{Box}
+      \end{itemize}
+		\item Test Test Test
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Multi-Columns}
@@ -58,18 +59,34 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}{中文测试中文測試}
-	\begin{outline}
-		\1 这是简体中文這是繁體中文: \textbf{加粗} + \underline{下划线下劃線} + \textit{斜体斜體}
-			\2 这是第二层
-			\2 這是第二層
-	\end{outline}
+\begin{frame}{中文测试}
+	\begin{itemize}
+		\item 这是简体中文: \textbf{加粗} + \underline{下划线}
+      \begin{itemize}
+        \item 这是第二层
+      \end{itemize}
+      \item 大部分中文字体不支持斜体命令\texttt{\textbackslash textit\{\}}
+	\end{itemize}
+  \hfill \break
+  披绣闼，俯雕甍，山原旷其盈视，川泽纡其骇瞩。闾阎扑地，钟鸣鼎食之家；舸舰弥津，青雀黄龙之舳。云销雨霁，彩彻区明。落霞与孤鹜齐飞，秋水共长天一色。渔舟唱晚，响穷彭蠡之滨；雁阵惊寒，声断衡阳之浦。
+\end{frame}
+
+\begin{frame}{中文測試}
+  \begin{itemize}
+		\item 這是繁體中文: \textbf{加粗} + \underline{下劃線}
+      \begin{itemize}
+        \item 這是第二層
+      \end{itemize}
+    \item 大部分中文字體不支持斜體命令\texttt{\textbackslash textit\{\}}
+	\end{itemize}
+  \hfill \break
+  披繡闥，俯雕甍。山原曠其盈視，川澤紆其駭矚。閭閻撲地，鐘鳴鼎食之家；舸艦彌津，青雀黃龍之舳。雲銷雨霽，彩徹區明。落霞與孤鶩齊飛，秋水共長天一色。漁舟唱晚，響窮彭蠡之濱；雁陣驚寒，聲斷衡陽之浦。
 \end{frame}
 
 \begin{frame}{Citation Tests}
-	\begin{outline}
-		\1 Yao's Millionaires' problem~\footcite{10.5555/1382436.1382751}
-	\end{outline}
+	\begin{itemize}
+		\item Yao's Millionaires' problem~\footcite{10.5555/1382436.1382751}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Algorithm Test}
@@ -109,9 +126,9 @@ fn main() {
     println!("Hello World!");
 }
     \end{minted}
-	\begin{outline}
-		\1 Inline code is also supported: \mintinline{rust}{fn main() { }}
-	\end{outline}
+	\begin{itemize}
+		\item Inline code is also supported: \mintinline{rust}{fn main() { }}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Math Test}
@@ -162,16 +179,25 @@ fn main() {
     \end{proof}
 \end{frame}
 
-\setbeamertemplate{headline}{}
-\addtobeamertemplate{frametitle}{\vspace*{-0.9\baselineskip}}{}
-\begin{frame}{}
+% \setbeamertemplate{headline}{}
+% \addtobeamertemplate{frametitle}{\vspace*{-0.9\baselineskip}}{}
+\begin{frame}[plain]{}
     \centering \Huge
     \emph{Thank You}
 \end{frame}
 
-\begin{frame}[allowframebreaks]
-    References
+\begin{frame}[noframenumbering,allowframebreaks]{References}
+  \setbeamertemplate{bibliography item}{}
+  % \setbeamertemplate{bibliography item}{\insertbiblabel}
 	\printbibliography
 \end{frame}
 
 \end{document}
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-master: t
+%%% TeX-command-extra-options: "-shell-escape"
+%%% TeX-engine: xetex
+%%% End:

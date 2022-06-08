@@ -1,9 +1,29 @@
-\documentclass[10pt]{beamer}
+\documentclass[10pt,aspectratio=1610]{beamer}
 \usepackage{hyperref} % Create hyperlinks in your document
-\usepackage[style=authortitle]{biblatex} % For citation
-\renewcommand*{\bibfont}{\tiny}
+% Use author-title-year bibstyle, copied from:
+% https://tex.stackexchange.com/questions/249762/biblatex-verbose-style-adding-year-to-the-author-title-format
+\usepackage[bibstyle=authoryear, citestyle=verbose-trad1, indexing=cite, giveninits=true, citepages=omit]{biblatex}
+\newbibmacro*{cite:labeldate+extradate}{%
+  \iffieldundef{labelyear}
+    {}
+    {\printtext[parens]{%
+        \printtext[bibhyperref]{%
+          \printlabeldateextra}}}}
+
+  \renewbibmacro*{cite:name}{%
+    \printnames{labelname}%
+    \setunit{\printdelim{nameyeardelim}}%
+    \usebibmacro{cite:labeldate+extradate}%
+    \setunit*{\printdelim{nametitledelim}}}
+
+  \renewbibmacro*{cite:idem}{%
+    \bibstring[\mkibid]{idem\thefield{gender}}%
+    \setunit{\printdelim{nameyeardelim}}%
+    \usebibmacro{cite:labeldate+extradate}%
+    \setunit{\printdelim{nametitledelim}}}
+% \renewcommand*{\bibfont}{\tiny}
 \addbibresource{bibliography.bib}
-%\usepackage{newtxmath} % If you don't have stix2 font, uncomment this line and comment the next line
+%\usepackage{newtxmath} % Use New TX font for math
 %\usepackage{stix2} % Use stix2 font for math
 \usepackage[no-math]{fontspec}
 \usepackage{xeCJK} % Chinese font setting
@@ -29,26 +49,51 @@
 \usepackage{stmaryrd}
 \usepackage{pifont}
 \usepackage{varwidth}
-\usepackage{outlines} % For simplifying nested itemized/enumerate lists
 \usepackage{braket} % For quantum Dirac notation
 \usepackage{derivative} % For derivatives
+\usepackage{microtype} % For typographical perfection
+
+% Some packages and configurations for math
+\usepackage{bm}
+\renewcommand{\vec}[1]{\bm{#1}}
+\DeclareMathOperator*{\E}{\mathbb{E}}
+\DeclareMathOperator*{\Var}{\mathrm{Var}}
+\DeclareMathOperator*{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\argmin}{\mathrm{arg\,min\;}}
+\DeclareMathOperator*{\argmax}{\mathrm{arg\,max\;}}
+\def\ZZ{{\mathbb Z}}
+\def\NN{{\mathbb N}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\QQ{{\mathbb Q}}
+\def\FF{{\mathbb F}}
+\def\EE{{\mathbb E}}
+\newcommand{\tr}{{\rm tr}}
+\newcommand{\sign}{{\rm sign}}
+\usepackage{bbm}
+\usepackage{physics}
+\let\div\divisionsymbol
+\usepackage{blkarray}
+\newcommand{\1}{\mathbbm{1}}
+\newcommand{\inprod}[2]{\left\langle #1, #2 \right\rangle}
+% \newcommand{\set}[1]{\left\{#1\right\}}
 
 % Set minted style and font size, used for displaying source code
-\setminted[rust]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
-\setminted[c]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
-\setminted[python]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
-\setminted[bash]{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\tiny}
+\setminted{frame=lines, breaklines, xleftmargin=16pt, linenos, fontsize=\fontsize{7}{7}, style=friendly, baselinestretch=1.2}
+
 % For inline code, use the current font size
 \makeatletter
 \newcommand{\currentfontsize}{\fontsize{\f@size}{\f@baselineskip}\selectfont}
 \makeatother
 \setmintedinline{fontsize=\currentfontsize}
 
+% Define CUHK theme colors
 \definecolor{cuhkpurple}{RGB}{117,15,109}
 \definecolor{cuhkyellow}{RGB}{221,163,0}
 \definecolor{cuhkblackyellow}{RGB}{153,102,0}
 \definecolor{cuhklightyellow}{RGB}{244,223,176}
 
+% Define Theorem box style
 \newtcbtheorem{theo}{Theorem}%
   {enhanced, breakable,
     colback = white, colframe = cuhkpurple, colbacktitle = cuhkpurple,
@@ -56,44 +101,34 @@
     boxed title style = {sharp corners},
     fonttitle = \sffamily\bfseries}{th}
 
-\iflinux
-  \setCJKmainfont{Source Han Sans CN}
-  \setCJKsansfont{Source Han Sans CN}
-\fi
-\ifmacosx
-  \setCJKmainfont{Source Han Sans}
-  \setCJKsansfont{Source Han Sans}
-\fi
+% Define Chinese fonts 
+\setCJKmainfont{Noto Sans CJK TC}
+\setCJKsansfont{Noto Sans CJK TC}
+\setCJKmonofont{Noto Sans Mono CJK TC}
 
+% Define English fonts 
 \usefonttheme{professionalfonts}
-\setmainfont[Mapping=tex-text]{Helvetica Neue}
-\setsansfont{Helvetica Neue}
+\setmainfont[Mapping=tex-text]{Lato}
+\setsansfont{Lato}
 \setmonofont{Source Code Pro}
 
+% Template theme
 \useoutertheme{infolines}
 \setbeamertemplate{navigation symbols}{}
 \usetheme[height=10mm]{Rochester}
-\usecolortheme[RGB={117,15,109}]{structure}
+\usecolortheme[named=cuhkpurple]{structure}
 \setbeamercolor{block title example}{use=structure,fg=white, bg=cuhkyellow}
 \setbeamercolor{block body example}{use=structure,fg=black, bg=cuhklightyellow}
 \setbeamercolor{alerted text}{fg=cuhkpurple, bg=cuhklightyellow}
-\setbeamercolor{frametitle}{ fg=white, bg=cuhkpurple }
+\setbeamercolor{frametitle}{fg=white, bg=cuhkpurple}
 
+% Some useful definitions
 \newcommand{\boxalert}[1]{{
     \usebeamercolor{alerted text}\colorbox{bg}{\alert{#1}}
 }}
 
 \newcommand{\cmark}{\ding{51}}
 \newcommand{\xmark}{\ding{55}}
-
-% Define some useful abbreviations
-\def\ZZ{{\mathbb Z}}
-\def\RR{{\mathbb R}}
-\def\CC{{\mathbb C}}
-\def\QQ{{\mathbb Q}}
-\def\EE{{\mathbb E}}
-\newcommand{\tr}{{\rm tr}}
-
 
 %% Logo
 \titlegraphic{

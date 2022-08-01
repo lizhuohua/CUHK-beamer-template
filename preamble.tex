@@ -1,8 +1,8 @@
-\documentclass[10pt,aspectratio=1610]{beamer}
+\documentclass[10pt,aspectratio=1610,table]{beamer}
 \usepackage{hyperref} % Create hyperlinks in your document
 % Use author-title-year bibstyle, copied from:
 % https://tex.stackexchange.com/questions/249762/biblatex-verbose-style-adding-year-to-the-author-title-format
-\usepackage[bibstyle=authoryear, citestyle=verbose-trad1, indexing=cite, giveninits=true, citepages=omit]{biblatex}
+\usepackage[backend=bibtex, bibstyle=authoryear, citestyle=verbose-trad1, indexing=cite, giveninits=true, citepages=omit]{biblatex}
 \newbibmacro*{cite:labeldate+extradate}{%
   \iffieldundef{labelyear}
     {}
@@ -33,14 +33,18 @@
 \usepackage{caption} % Customising captions in floating environments
 \usepackage{verbatim}
 \usepackage{multicol} % Multi-columns
+\usepackage{multirow} % Multi-rows
 \usepackage{booktabs} % Better tables
 \usepackage{tikz} % For plot
+\usepackage{pgf-pie} % For plotting pie chart
 \usetikzlibrary{angles, arrows.meta, quotes, calc, intersections}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.16}
 \usepackage{soul} % For smallcaps/striking out/highlighting
 \sethlcolor{cuhklightyellow}
+\usepackage{listings} % For source code
 \usepackage{minted} % For source code
+\usepackage{sourcecodepro} % For using source code pro as the default typewriter font
 \usepackage{ifplatform} % For identifying OS platforms
 \usepackage[vlined, ruled, linesnumbered]{algorithm2e} % For algorithms
 \usepackage{algorithmic}

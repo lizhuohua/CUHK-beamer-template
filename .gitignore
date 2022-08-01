@@ -15,3 +15,4 @@ _minted*
 *.fdb_latexmk
 *.fls
 /auto
+slides-blx.bib
